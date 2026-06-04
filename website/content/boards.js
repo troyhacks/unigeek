@@ -390,6 +390,30 @@ export const BOARDS = [
       ], "Touch-only navigation. Colored edge indicators are drawn on screen to show active zones."],
     ],
   },
+  {
+    id: "fnk0104b",
+    name: "Freenove FNK0104B (2.8\" Touch)",
+    chip: "ESP32-S3",
+    tags: ["WiFi", "BLE", "Touch", "USB HID", "PSRAM"],
+    port: "USB-C (native)",
+    baud: 921600,
+    bootloader: "Auto via native USB",
+    storage: "LittleFS only",
+    knownIssues: [
+      "SD card wired for 4-bit SDMMC is not yet supported by unigeek — falls back to LittleFS.",
+      "WS2812 RGB LED on GPIO 42 is pin-defined but no driver is wired up (lib not in codebase).",
+      "ES8311 codec + FM8002E amp I2S audio pins are defined; audio driver TBD.",
+    ],
+    bootNotes: "Freenove 2.8\" 240x320 ILI9341 SPI display, FT6336U capacitive touch on shared I2C (SDA=16, SCL=15, addr=0x38). ESP32-S3-WROOM-1 (N16R8) with 16MB flash and 8MB Quad PSRAM. If flashing fails, hold BOOT while plugging USB-C to force download mode (strapping pin).",
+    nav: [
+      ["Touch", [
+        { input: "Touch — left edge (x < 80)", action: "Back" },
+        { input: "Touch — right top third", action: "Up" },
+        { input: "Touch — right middle third", action: "Select" },
+        { input: "Touch — right bottom third", action: "Down" },
+      ], "Touch-only navigation. Colored edge indicators are drawn on screen to show active zones."],
+    ],
+  },
 ];
 
 export function getBoardById(id) {
